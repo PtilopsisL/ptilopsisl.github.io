@@ -7,3 +7,6 @@ theme:
 markdown_extensions:
 
 extra_css:
+
+nav:
+  - 首页: README.md
