@@ -2,7 +2,9 @@ git checkout master
 git branch -D blog
 git branch blog
 git checkout blog
+
 mkdocs build
+mv docs/assets assets
 
 while read file; do
 	rm -rf $file
