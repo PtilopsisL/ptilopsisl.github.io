@@ -1,25 +1,25 @@
 # git
 
 ## 配置
-'''
+```
 git config --global "Your Name"
 git config --global "Email Address"
 git config --global credential.helper store    保存密码(每次要输密码/重复输密码)
-'''
+```
 ## 初始化
-'''
+```
 git init
-'''
+```
 ## 提交修改
-'''
+```
 git add <file>
 git add -u 提交work directory中所有已track的文件至staging area
 git commit -m "descriptions"
 git commit --amend 对最近一次的提交做内容修改
 git commit --amend --author "user_name <user_email>" 修改最近提交用户名和邮箱
-'''
+```
 ## 查看状态、比对
-'''
+```
 git status
 git status -s 文件状态缩略信息, 常见 A:新增; M:文件变更; ?:未track; D:删除
 git diff <file>
@@ -28,9 +28,9 @@ git diff --check <file>                 检查是否有空白错误(regex:' \{1,
 git diff --cached <file>                查看已add的内容(绿M)
 git diff branch1 branch2 --stat         查看两个分支差异
 git diff branch1 branch2 <file...>      查看分支文件具体差异
-'''
+```
 ## 查看历史版本、历史操作
-'''
+```
 git log
 git reflog
 git log -n                  最近n条的提交历史
@@ -77,38 +77,38 @@ git log origin/b3.0/master --author=some_leave --since="1 month ago" 查看某�
 git log --since=1.weeks     过去一周的提交(写周报的时候可以看看我这一周干了啥)
 git log --since=1.days      过去一天的提交(下班的时候可以看看我这一天干了啥)
 git log --since="1 weeks 2 days 3 hours 40 minutes 50 seconds ago" 过去1周2天3小时40分50秒之内的提交
-'''
+```
 
 ## 版本回退、前进
-'''
+```
 git reset --hard HEAD^      回退到上1版本
 git reset --hard HEAD~5     回退到上5个版本
 git reset --hard id         回退到指定版本
-'''
+```
 
 ## 撤销修改
-'''
+```
 git checkout -- <file>      撤销修改：误修改工作区文件，未git add/commit
 git restore <file>          撤销修改：误修改工作区文件，未git add/commit
 git reset HEAD <file>       撤销git add：误将文件加入暂存区（git add），未git commit
 git reset --hard HEAD^      撤销git commit：误将文件提交（一旦提交，只能通过版本回退进行撤销）
-'''
+```
 ## 删除与恢复
-'''
+```
 git rm/add <file>
 git commit -m "remove <file>"   删除版本库中的<file>：删除工作区文件后，继续删除版本库中相应的文件
 git checkout -- <file>          根据版本库中的<file>恢复工作区<file>
-'''
+```
 ## 清理工作区未track也未ignore的文件或文件夹(如各种临时.swp, .patch文件等)
-'''
+```
 git clean -i    #交互式清理, 不常用
 git clean -n    #查看清理文件列表(不包括文件夹), 不执行实际清理动作
 git clean -n -d #查看清理文件列表(包括文件夹), 不执行实际清理动作
 git clean -f    #清理所有未track文件
 git clean -df   #清理所有未track文件和文件夹, 常用, 但使用前确保新增加的文件或文件夹已add, 否则新创建的文件或者文件夹也会被强制删除
-'''
+```
 ## 关联GitHub远程仓库（本地到远程）
-'''
+```
 git remote add origin <remote address>    在本地工作区目录下按照 GitHub 提示进行关联
 git remote rm origin                      解除错误关联
 git push -u origin master                 第一次将本地仓库推送至远程仓库（每次在本地提交后进行操作）
@@ -116,13 +116,13 @@ git push origin master                    以后每次将本地仓库推送至�
 <remote address>:
     git@github.com:<username>/<repository>.git
     https://github.com/<username>/<repository>.git
-'''
+```
 ## 克隆GitHub远程仓库（远程到本地）
-'''
+```
 git clone <remote address>    git协议速度更快但通常公司内网不允许，https协议速度慢
-'''
+```
 ## 分支管理：创建、切换、查看、合并、删除
-'''
+```
 git branch <branch name>            创建<branch name>分支
 git checkout <branch name>          切换至<branch name>分支
 git switch <branch name>            切换至<branch name>分支
@@ -132,40 +132,40 @@ git branch                          查看已有分支（* 表示当前分支）
 git merge <branch name>             合并<branch name>到当前分支（通常在master分支下操作）
 git branch -d <branch name>         删除分支
 git branch -m oldbranchname newname 删除分支
-'''
+```
 ## 解决合并冲突
-'''
+```
 合并时报错“分支发生冲突”，首先vim相应文件，修改冲突位置，然后按照git add/commit重新提交，最后删除多余分支即可。
 git log --graph --pretty=oneline --abbrev-commit
 git log --graph
-'''
+```
 ## 分支管理：合并后删除分支也在 log 中保留分支记录
-'''
+```
 git merge --no-ff -m "descriptions" <branch name>
-'''
+```
 ## 开发流程：
-'''
+```
 master分支              发布稳定版本
 dev分支                 发布开发版本
 <developer name>分支    个人开发分支（个人开发完成将该分支并入dev，同时保留该分支，继续开发）
-'''
+```
 ## Bug分支管理（建立单独分支进行bug修复）
 软件开发中，bug就像家常便饭一样。有了bug就需要修复，在Git中，由于分支是如此的强大，所以，每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。
-'''
+```
 git stash                   保存当前工作现场（在dev未完成开发，但master有bug需要修复）
 git stash pop               回到dev分支后恢复工作现场（list中的现场会同时被删除）
 git stash list              查看当前存储的工作现场
 git stash apply stash@{#}   回到指定工作现场（list中的现场不会被删除，需要用git stash drop）
 git stash drop stash@{#}    删除指定工作现场
 git cherry-pick <id>        在master修复好bug后，在dev复制一遍bug修复流程
-'''
+```
 ## Feature分支管理（建立单独分支添加新功能）
 软件开发中，总有无穷无尽的新的功能要不断添加进来。添加一个新功能时，你肯定不希望因为一些实验性质的代码，把主分支搞乱了，所以，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支。
-'''
+```
 git branch -D <branch name>    强制删除分支（丢弃未合并分支）
-'''
+```
 ## 协作与分支推送
-'''
+```
 User 1:
 git remote [-v]                        查看远程库信息（-v 查看详细信息）
 git remote update origin --prune       更新分支列表(更新远程分支列表)
@@ -181,9 +181,9 @@ git pull <remote> <branch>
 git branch --set-upstream-to=origin/<branch> <branch>    本地与远程关联
 git pull                               拉取远程文件（并解决冲突）
 git commit/push                        重新提交并推送
-'''
+```
 ## 标签管理（常用于版本管理）：查看、创建、操作
-'''
+```
 git tag                                                     查看标签
 git show <tag name>                                         查看指定标签
 git log --pretty=oneline --abbrev-commit --decorate=full    在log中显示标签
@@ -194,9 +194,9 @@ git tag -d <tag name>                                       删除本地标签
 git push origin <tag name>                                  推送指定标签到远程
 git push origin --tags                                      推送所有本地标签到远程
 git push origin :refs/tags/<tag name>                       删除远程标签（先删除本地标签）
-'''
+```
 ## rebase(换基)
-'''
+```
 rebase 在日常中常用功能主要是两个, 多人协同开发定期rebase master以及压缩某分支多个commit
 git rebase master 常见于多人开发, 每个开发人员从master checkout出自己的分支, 开发一段时间后提交至master之前最好rebase一下, 防止冲突,
               就算真有冲突在本地解决好过强制提交, 开发流程中尽量保证master的干净整洁
@@ -322,9 +322,9 @@ git rebase -i HEAD~n 压缩当前分支的n个commit并合并为1个commit, 常�
 
 git rebase --abort # rebase过程中发生错误, 可以利用该命令终止整个rebase过程
 git rebase --continue # rebase过程中发生冲突, 在解决冲突后可以利用该命令进行后续过程
-'''
+```
 ## 打patch(补丁)
-'''
+```
 生成diff patch文件(git可以识别diff文件)
 git <branch> log -n -p > diff.patch # 生成某分支过去n个commit的文件diff信息至单个diff文件
 git diff <--cached> diff.patch # 针对当前缓存区的内容生成diff文件
@@ -348,9 +348,9 @@ git am 0001-update-bash.sh.patch            #将该patch打上到当前分支, �
 git am ./*.patch                            #将当前路径下的所有patch按照先后顺序打上
 git am --abort                              #终止整个打patch的过程, 类似rebase --abort
 git am --resolved                           #解决冲突后, 可以执行该命令进行后续的patch, 类似rebase --continue
-'''
+```
 ## bundle(打包)
-'''
+```
 该命令会将git工程打包, 默认情况下会打包所有commit记录和track的文件
 不同于简单粗暴tar.gz打包整个文件夹, bundle只打包那些push过的记录
 如某git工程下存在.build构建后的目录, 而.gitignore又忽略了该文件夹
@@ -367,35 +367,35 @@ git bundle create awesome-cheatsheets.bundle HEAD~10..HEAD
 git bundle create awesome-cheatsheets.bundle lhs_commit_md5..rhs_commit_md5
 git bundle create awesome-cheatsheets.bundle origin/master..master
 git bundle create awesome-cheatsheets.bundle master ^origin/master
-'''
+```
 
 ## 使用GitHub
-'''
+```
 fork --> clone --> add/commit/push --> pull request
-'''
+```
 
 ## 其他配置
-'''
+```
 git config --global color.ui true    显示颜色
-'''
+```
 ## 配置.gitignore文件
-'''
+```
 /<dir name>/                    忽略文件夹
 *.zip                           忽略.zip文件
 /<dir name>/<file name>         忽略指定文件
-'''
+```
 ## 文件.gitignore生效后
-'''
+```
 git add -f <file>               强制添加
 git check-ignore -v <file>      查看生效规则
-'''
+```
 ## 配置别名
-'''
+```
 git config [--global] alias.<alias> '<original command>'    为所有工作区/当前工作区配置别名
 .git/config             当前工作区的配置文件
 ~/.gitconfig            当前用户的配置文件
-'''
+```
 ## 子模块
-'''
+```
 git submodule foreach git pull    子模块更新
-'''
+```
