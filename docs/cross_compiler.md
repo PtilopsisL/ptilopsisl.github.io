@@ -23,6 +23,7 @@ wget https://mirrors.ustc.edu.cn/gnu/gcc/gcc-9.4.0/gcc-9.4.0.tar.gz
 wget https://mirrors.ustc.edu.cn/gnu/glibc/glibc-2.31.tar.gz
 git clone https://mirrors.ustc.edu.cn/linux.git
 ```
+
 - 这里`glibc`为了兼容性建议选`2.31`版本，当然如果你不打算把用交叉编译器编译出的程序放到别的机器上运行，则可以不用考虑兼容性，或者在用交叉编译器编译的时候指定`-static`选项。
 - `Linux`源代码在本次编译中只用于安装头文件，如果认为`clone`整个代码库占用空间太大，可以下载源代码`tarball`。
 - `gcc`9版本与10版本都经过测试能成功编译，其他版本未测试过可行性。
@@ -43,6 +44,7 @@ sudo apt install libgmp-dev libmpfr-dev libmpc-dev
 一般在编译库的时候只有`build`和`target`两个选项，在编译编译器的时候则有以上三个选项。这三个选项的意义是：在`build`机器上编译出能在`host`机器上运行，生成`target`机器代码的编译器。
 ### `cpu-company-system`格式
 指定`host`或`target`需要按照上述格式来指定，当然其中最重要的还是`cpu`和`system`两个部分，`company`似乎是可以随便写的。
+
 - `cpu`：填写指令集名称，如`aarch64`、`riscv32`、`mips64`等。
 - `company`：可以用`gcc -v`看一看自己编译器中的`company`是什么（一般来说是`pc`）然后填上去，或者直接指定为`unknown`。
 - `system`：这里填写的内容主要决定的是程序的运行格式，`Linux`系统的可执行文件格式是`elf`，这里填写`linux`、`gnu`或`elf`都是差不多的。
@@ -68,6 +70,7 @@ GLIBC=glibc-2.34
 LINUX=linux-stable
 ```
 说明：
+
 - `LINUX_ARCH`是目标机器指令集名称，该名称需要查看`Linux`源代码中的`arch`文件夹，找到相对应的名称。比如说`aarch64`不能直接填`aarch64`，应当填写`arm64`。
 - `TARGET`即为先前介绍过的`cpu-company-system`格式。
 - `PREFIX`为安装文件夹。

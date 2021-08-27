@@ -1,3 +1,6 @@
+# POSIX标准
+POSIX标准的诞生是为了阻止Unix各类系统朝着互相不兼容的趋势发展。这套标准涵盖了很多方面，比如Unix系统调用的C语言接口、shell程序和工具、线程及网络编程。
+
 POSIX标准的详细内容可点击链接查看<https://pubs.opengroup.org/onlinepubs/9699919799/>
 
 ### 支持POSIX的系统(部分)
