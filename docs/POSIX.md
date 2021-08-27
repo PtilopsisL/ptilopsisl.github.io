@@ -1,5 +1,21 @@
 POSIX标准的详细内容可点击链接查看<https://pubs.opengroup.org/onlinepubs/9699919799/>
 
+### 支持POSIX的系统(部分)
+#### 完全支持
+- Solaris
+- macOS (since 10.5 Leopard)
+#### 大多支持
+- Android
+- Darwin
+- FreeBSD
+- Linux
+- MINIX
+#### 用于Windows的POSIX
+Windows对POSIX的支持并不是很好，需要一些额外的软件为Windows提供POSIX环境的支持。
+- Cygwin
+- MinGW
+
+### POSIX标准的部分特点
 - 定义接口，但不定义实现。一般来说大部分的标准也只会给你定义有哪些接口，实现部分则是各自用各自的方法去完成。
 - POSIX中对系统接口和头文件的定义是按照ISO C标准中规定的标准C语言来编写的。
 - 最少的接口与定义。POSIX中强制性的核心设施保持在尽可能少的程度，额外的功能被添加为可选的拓展。
