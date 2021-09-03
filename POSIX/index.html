@@ -1,0 +1,399 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+    
+    
+      
+        <title>POSIX标准 - PtilopsisL</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f7f47774.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#posix" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="PtilopsisL" class="md-header__button md-logo" aria-label="PtilopsisL" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PtilopsisL
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              POSIX标准
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="PtilopsisL" class="md-nav__button md-logo" aria-label="PtilopsisL" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    PtilopsisL
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        首页
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#posix_1" class="md-nav__link">
+    支持POSIX的系统(部分)
+  </a>
+  
+    <nav class="md-nav" aria-label="支持POSIX的系统(部分)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    完全支持
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    大多支持
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowsposix" class="md-nav__link">
+    用于Windows的POSIX
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#posix_2" class="md-nav__link">
+    POSIX标准的部分特点
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#base-definitions" class="md-nav__link">
+    基础定义Base Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-interfaces" class="md-nav__link">
+    系统接口System Interfaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell-and-utilities" class="md-nav__link">
+    终端与实用工具Shell and Utilities
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rationale-informative" class="md-nav__link">
+    理论依据Rationale (Informative)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="posix">POSIX标准<a class="headerlink" href="#posix" title="Permanent link">&para;</a></h1>
+<p>POSIX标准的诞生是为了阻止Unix各类系统朝着互相不兼容的趋势发展。这套标准涵盖了很多方面，比如Unix系统调用的C语言接口、shell程序和工具、线程及网络编程。</p>
+<p>POSIX标准的详细内容可点击链接查看<a href="https://pubs.opengroup.org/onlinepubs/9699919799/">https://pubs.opengroup.org/onlinepubs/9699919799/</a></p>
+<h3 id="posix_1">支持POSIX的系统(部分)<a class="headerlink" href="#posix_1" title="Permanent link">&para;</a></h3>
+<h4 id="_1">完全支持<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Solaris</li>
+<li>macOS (since 10.5 Leopard)</li>
+</ul>
+<h4 id="_2">大多支持<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Android</li>
+<li>Darwin</li>
+<li>FreeBSD</li>
+<li>Linux</li>
+<li>MINIX</li>
+</ul>
+<h4 id="windowsposix">用于Windows的POSIX<a class="headerlink" href="#windowsposix" title="Permanent link">&para;</a></h4>
+<p>Windows对POSIX的支持并不是很好，需要一些额外的软件为Windows提供POSIX环境的支持。
+- Cygwin
+- MinGW</p>
+<h3 id="posix_2">POSIX标准的部分特点<a class="headerlink" href="#posix_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>定义接口，但不定义实现。一般来说大部分的标准也只会给你定义有哪些接口，实现部分则是各自用各自的方法去完成。</li>
+<li>POSIX中对系统接口和头文件的定义是按照ISO C标准中规定的标准C语言来编写的。</li>
+<li>最少的接口与定义。POSIX中强制性的核心设施保持在尽可能少的程度，额外的功能被添加为可选的拓展。</li>
+</ul>
+<p>POSIX的定义包含以下四大部分：
+- 基础定义<code>Base Definitions</code>
+- 系统接口<code>System Interfaces</code>
+- 终端与实用工具<code>Shell and Utilities</code>
+- 理论依据<code>Rationale (Informative)</code></p>
+<h3 id="base-definitions">基础定义<code>Base Definitions</code><a class="headerlink" href="#base-definitions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>重要的系统概念的定义
+如进程(Process)、线程(Thread)、管道(Pipe)、套接字(Socket)等等</li>
+<li>一般概念<code>General Concepts</code>
+一些细节如文件名应该对大小写敏感、文件的访问权限(read, write, execute)等等。</li>
+<li>字符编码</li>
+<li>环境变量
+包含平时常见的<code>CC</code>、<code>HOME</code>、<code>PATH</code>、<code>PWD</code>、<code>SHELL</code>等环境变量。</li>
+<li>正则表达式</li>
+<li>头文件
+定义了包括<code>&lt;stdio.h&gt;</code>、<code>&lt;stdlib.h&gt;</code>、<code>&lt;string.h&gt;</code>、<code>&lt;pthread.h&gt;</code>等诸多头文件中需要包含的内容。</li>
+</ul>
+<h3 id="system-interfaces">系统接口<code>System Interfaces</code><a class="headerlink" href="#system-interfaces" title="Permanent link">&para;</a></h3>
+<ul>
+<li>错误代码</li>
+<li>信号</li>
+<li>进程调度策略</li>
+<li>包含<code>mmap</code>、<code>write</code>、<code>socket</code>、<code>open</code>等系统接口。</li>
+</ul>
+<h3 id="shell-and-utilities">终端与实用工具<code>Shell and Utilities</code><a class="headerlink" href="#shell-and-utilities" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Shell命令语言
+包含语言细节、保留关键字、重定向、语法、内建命令(如<code>export</code>,<code>exec</code>,<code>unset</code>)等。</li>
+<li>批处理作业环境</li>
+<li>实用工具
+包含<code>vi</code>、<code>cd</code>、<code>chmod</code>、<code>echo</code>等常用工具。</li>
+</ul>
+<h3 id="rationale-informative">理论依据<code>Rationale (Informative)</code><a class="headerlink" href="#rationale-informative" title="Permanent link">&para;</a></h3>
+<ul>
+<li>主要会讲述定义某些东西背后的原因</li>
+<li>分为五个章节，分别讲述基础定义、系统接口、终端与实用工具、可移植性和<code>Subprofiling Considerations</code></li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.febc23d1.min.js"></script>
+      
+    
+  </body>
+</html>
